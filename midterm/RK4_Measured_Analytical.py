@@ -63,7 +63,7 @@ plt.xlabel("Time (sec)")
 plt.ylabel("Height (m)")
 plt.legend()
 plt.grid()
-plt.savefig("RK4.png")
+plt.savefig("RK4 vs Lab Values.png")
 plt.show()
 
 # plt.show()
