@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Apr  8 20:32:38 2023
+
+@author: halle
+"""
+
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -5,7 +12,6 @@ import matplotlib.pyplot as plt
 data = np.loadtxt('output2.txt',skiprows=15)
 
 time = data[:,0]
-#time=data[15:515]
 column2 = data[:, 1]
 col2=(((column2[0:500])/1000)-0.23)
 column2=((column2)/1000)
@@ -53,16 +59,6 @@ for x in xpoints:
     u1 += (m1 + 2*m2 + 2*m3 + m4)/6
     u2 += (k1 + 2*k2 + 2*k3 + k4)/6
 
-#plt.plot(xpoints, u1points, c="green", label="RK4")
-
-#plt.yscale("log")
-# plt.ylabel("Y-Axis")
-# plt.xlabel("X-Axis")
-# plt.legend()
-#plt.title("Euler's, Midpoint, Rk4, and Analytical Solutions for Equation 1")
-#plt.text(-0.1, 10**(2.3),"\u0394t = {:.2f}".format(N))
-
-
 
 plt.figure(figsize=(15,8))
 plt.plot(xpoints, column2, label="Measured")
@@ -72,7 +68,7 @@ plt.xlabel("Time (sec)")
 plt.ylabel("Height (m)")
 plt.legend()
 plt.grid()
-plt.savefig("fuck a me no fuck a u.png")
+plt.savefig("Output.png")
 plt.show()
 
 # plt.show()
