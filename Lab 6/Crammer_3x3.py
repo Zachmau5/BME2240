@@ -15,7 +15,7 @@ def cramer_2x2(A,B):
 
     A1 = np.copy(A)
     A2 = np.copy(A)
-    
+
     A1[:,0] = B
     A2[:,1] = B
 
@@ -29,7 +29,7 @@ def cramer_3x3(A,B):
     A1 = np.copy(A)
     A2 = np.copy(A)
     A3 = np.copy(A)
-    
+
     A1[:,0] = B
     A2[:,1] = B
     A3[:,2] = B
@@ -46,6 +46,8 @@ def main():
 #coef = np.array([[a11,a12],
                 # [a21,a22]])
 #const = np.array([s1,s2])
+
+
     coef = np.array([[110,-10,-100],
                      [-10,143,-33],
               [-100,-33,233]])
@@ -53,8 +55,7 @@ def main():
 
 
     ans=cramer_3x3(coef,const)
-    print("Crammer 3 x 3 : %0.3e, %0.3e, %0.3e" % ans)
-   
+    print(ans)
    
 if __name__ == "__main__":
     main()
