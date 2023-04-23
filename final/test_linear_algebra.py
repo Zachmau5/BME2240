@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import random
 import time
 import unittest
@@ -103,4 +104,4 @@ class TestLinalg(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main(
+    unittest.main()
