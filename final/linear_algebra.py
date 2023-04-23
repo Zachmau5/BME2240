@@ -1,9 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Apr 22 11:10:17 2023
-
-@author: halle
-"""
+#!/usr/bin/python3
 import numpy as np
 from sympy import Matrix
 
@@ -38,37 +33,19 @@ def qrgs(A):
         Q[:,j] = v / R[j,j]
         
     return Q, R
-def eigen(A):
-    m = Matrix(A)
-    eigenvectors = []
-    eigenvalues = []
-    for eigenvalue, multiplicity, eigenvects in m.eigenvects():
-        eigenvalues += [eigenvalue]*multiplicity
-        for eigenvect in eigenvects:
-            eigenvectors.append(list(eigenvect))
-    return eigenvalues, eigenvectors
 
+def eigen(A, eps=1e-18, max_iter=5000):
+    n = A.shape[0]
+    V = np.eye(n)
+    s = np.trace(A) / n  # initial shift
 
-# def eigen(A, eps=1e-18, max_iter=100):
-#     n = A.shape[0]
-#     V = np.eye(n)
-#     s = np.trace(A) / n  # initial shift
-
-#     for i in range(max_iter):
-#         Q, R = qrgs(A - s*np.eye(n))
-#         A = R @ Q + s*np.eye(n)
-#         V = V @ Q
-#         if abs(A[n-1, n-2]) < eps:
-#             break
-        
-#         # update shift
-#         s = np.trace(A) / n
+    for i in range(max_iter):
+        Q, R = qrgs(A - s*np.eye(n))
+        A = R @ Q + s*np.eye(n)
+        V = V @ Q
+         # update shift
+        s = np.trace(A) / n
     
-#     w = np.diag(A)
+    w = np.diag(A)
     
-#     return w, V
-
-A = [[10,2,3], [3,12,5], [5,5,8]]
-w, V = eigen(A)
-print(w)  
-print(V)
+    return w, V
