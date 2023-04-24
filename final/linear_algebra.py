@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 import numpy as np
-from sympy import Matrix
 
 def linear_least_squares(A, b):
     Q, R = qrgs(A)
@@ -34,7 +33,7 @@ def qrgs(A):
         
     return Q, R
 
-def eigen(A, eps=1e-18, max_iter=5000):
+def eigen(A, max_iter=5000):
     n = A.shape[0]
     V = np.eye(n)
     s = np.trace(A) / n  # initial shift
@@ -43,7 +42,10 @@ def eigen(A, eps=1e-18, max_iter=5000):
         Q, R = qrgs(A - s*np.eye(n))
         A = R @ Q + s*np.eye(n)
         V = V @ Q
-         # update shift
+        eps=1e-18
+        if abs(A[n-1, n-2]) == eps:
+            break
+        # update shift
         s = np.trace(A) / n
     
     w = np.diag(A)
